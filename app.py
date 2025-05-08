@@ -13,9 +13,17 @@ div[data-testid="column"] {
     padding: 0 !important;
     margin: 0 !important;
 }
+/* Eliminar espacio vertical entre filas */
+div[data-testid="stColumns"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+    padding: 0 !important;
+    margin: 0 !important;
+}
 /* Estilos de botones */
 div.stButton > button {
-    width:100%;
+    width: 100%;
     padding: 0.4rem;
     min-width: 2.5rem;
     min-height: 2.5rem;
