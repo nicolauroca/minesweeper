@@ -45,7 +45,7 @@ def init_state():
         st.session_state.flag_mode = False
         generate_board()
 
-@st.experimental_memo(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def create_board(rows, cols, mines):
     # Crear tablero con minas y conteo de adyacentes
     board = [[0 for _ in range(cols)] for _ in range(rows)]
@@ -63,6 +63,7 @@ def create_board(rows, cols, mines):
                 )
                 board[r][c] = count
     return board
+
 
 def generate_board():
     st.session_state.board = create_board(
