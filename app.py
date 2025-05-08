@@ -15,6 +15,7 @@ div[data-testid="column"] {
 }
 /* Estilos de botones */
 div.stButton > button {
+    width:100%;
     padding: 0.4rem;
     min-width: 2.5rem;
     min-height: 2.5rem;
