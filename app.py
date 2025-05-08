@@ -8,9 +8,18 @@ st.set_page_config(page_title="Buscaminas", layout="wide")
 # Estilos personalizados para eliminar espacios y ajustar botones
 st.markdown("""
 <style>
-/* Eliminar inline gaps en contenedores flex */
-div[style*="display: flex"][style*="gap:"] {
+/* Anular flex en bloques verticales */
+div.stVerticalBlock {
+    display: block !important;
     gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+/* Anular gap en bloques horizontales */
+div.stHorizontalBlock {
+    gap: initial !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 /* Eliminar gaps entre filas de columnas */
 div[data-testid="stColumns"] {
@@ -79,6 +88,7 @@ def create_board(rows, cols, mines):
                 board[r][c] = count
     return board
 
+
 def generate_board():
     st.session_state.board = create_board(
         st.session_state.rows, st.session_state.cols, st.session_state.mines
@@ -90,6 +100,7 @@ def generate_board():
     create_board.clear()
 
 # Revelar celdas recursivamente
+
 def reveal_cell(r, c):
     if st.session_state.revealed[r][c] or st.session_state.flagged[r][c] or st.session_state.game_over:
         return
@@ -137,11 +148,10 @@ with st.sidebar:
     rows = st.slider("Filas", 5, 20, st.session_state.rows)
     cols = st.slider("Columnas", 5, 20, st.session_state.cols)
     mines = st.slider("Minas", 5, min(rows * cols - 1, 50), st.session_state.mines)
-    flag_mode = st.checkbox("Modo bandera", value=st.session_state.flag_mode)
     if (rows, cols, mines) != (st.session_state.rows, st.session_state.cols, st.session_state.mines):
         st.session_state.rows, st.session_state.cols, st.session_state.mines = rows, cols, mines
         generate_board()
-    st.session_state.flag_mode = flag_mode
+    st.session_state.flag_mode = st.checkbox("Modo bandera", value=st.session_state.flag_mode)
     if st.button("Reiniciar"):
         generate_board()
 
