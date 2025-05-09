@@ -20,8 +20,7 @@
 1. **Clona este repositorio**
 
    ```bash
-   git clone https://github.com/tu-usuario/buscaminas-streamlit.git
-   cd buscaminas-streamlit
+   git clone https://github.com/nicolauroca/minesweeper.git
    ```
 2. **Crea y activa un entorno virtual** (recomendado)
 
